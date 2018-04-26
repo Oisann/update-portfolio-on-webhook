@@ -8,7 +8,7 @@ Downloads and stores the PORTFOLIO file of the repo it recieves a webhook from.
 
 ## Docker
 
-`docker run --rm -it -e SECRET=somereallyobscuresecretthatnobodywillguess -e DB_FOLDER=/home/portfolio -v ${PWD}:/home/portfolio -v ~/.ssh/:/root/.ssh/ -p 80:80 oisann/update-portfolio-on-webhook:latest`
+`docker run --rm -it -e SECRET=somereallyobscuresecretthatnobodywillguess -e DB_FOLDER=/home/portfolio -v ${PWD}:/home/portfolio -p 80:80 oisann/update-portfolio-on-webhook:latest`
 
 This container updates its internal database when it recieves a webhook. It actually just downloads the raw PORTFOLIO file in the root of the repo on the master branch, and stores it in the /home/portfolio folder. 
 
