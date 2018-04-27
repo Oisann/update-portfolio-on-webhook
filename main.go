@@ -27,8 +27,6 @@ func serveGithubWebhook(w http.ResponseWriter, r *http.Request) {
 	remoteHash := r.Header.Get("X-Hub-Signature")
 
 	if ("sha1=" + hashResult) == remoteHash {
-		fmt.Println("Hashes matched, ran command!")
-	} else {
 		var y map[string]interface{}
 		json.Unmarshal(body, &y)
 		repo := y["repository"].(map[string]interface{})["full_name"]
@@ -40,6 +38,8 @@ func serveGithubWebhook(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			logError(err)
 		}
+		fmt.Println("Hashes matched, ran command!")
+	} else {
 		fmt.Println("Hashes didn't match, doing nothing.")
 	}
 
